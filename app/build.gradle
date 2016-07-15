@@ -26,4 +26,12 @@ dependencies {
 
     // Google map
     compile 'com.google.android.gms:play-services-maps:9.2.0'
+
+    //Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.0.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.0.0'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.0.0-RC1'
+
 }

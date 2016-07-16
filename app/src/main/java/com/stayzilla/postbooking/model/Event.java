@@ -6,6 +6,7 @@ package com.stayzilla.postbooking.model;
 public class Event {
 
     public String name;
+    public String type;
     public String lat;
     public String lon;
 

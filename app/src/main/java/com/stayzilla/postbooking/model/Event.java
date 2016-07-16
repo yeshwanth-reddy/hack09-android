@@ -7,7 +7,7 @@ public class Event {
 
     public String name;
     public String type;
-    public String lat;
-    public String lon;
+    public double lat;
+    public double lon;
 
 }

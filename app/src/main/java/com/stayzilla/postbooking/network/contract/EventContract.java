@@ -1,11 +1,12 @@
 package com.stayzilla.postbooking.network.contract;
 
+import com.stayzilla.postbooking.model.EventsRequest;
 import com.stayzilla.postbooking.model.PlacesModel;
 
 import retrofit2.Call;
-import retrofit2.http.GET;
+import retrofit2.http.Body;
 import retrofit2.http.Headers;
-import retrofit2.http.Path;
+import retrofit2.http.POST;
 
 /**
  * Created by sasikumar on 16/07/16.
@@ -18,7 +19,7 @@ public interface EventContract {
             "X-Requested-With: XMLHttpRequest",
             "Referrer: http://mobileapp.stayzilla.com/",
     })
-    @GET("/places/{lat}/{lng}")
-    Call<PlacesModel> getEvents(@Path("lat") String lat, @Path("lng") String lng);
+    @POST("/places")
+    Call<PlacesModel> getEvents(@Body EventsRequest eventsRequest);
 
 }

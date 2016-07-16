@@ -19,7 +19,4 @@ public interface MyBookingsContract {
 
     @GET("/v1/json/bookinggetall/{token}")
     Call<MyBookingsModel> getMyBookings(@Path("token")String token);
-
-
-
 }

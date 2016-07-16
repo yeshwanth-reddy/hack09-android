@@ -10,5 +10,4 @@ public class PlacesModel {
 
     public List<Event> events = new ArrayList<Event>();
 
-
 }

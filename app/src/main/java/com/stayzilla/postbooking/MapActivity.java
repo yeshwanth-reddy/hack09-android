@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -37,6 +38,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private LinearLayout eventsMainLinearLayout;
     private OverflowLayoutDrawer overflowLayoutDrawer;
     private ArrayList<String> selectedEvents = new ArrayList<>();
+    LatLng hotelLatLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 //                editEventsTextView.setVisibility(View.VISIBLE);
             }
         });
+
+        hotelLatLng = new LatLng(24.8366999, 79.9213073);
 
         addEventsInOverFlowLayout();
         sendEventRequest();
@@ -131,8 +135,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private void sendEventRequest() {
 
         EventsRequest eventsRequest = new EventsRequest();
-        eventsRequest.lat = "24.8366999";
-        eventsRequest.lon = "79.9213073";
+        eventsRequest.lat = String.valueOf(hotelLatLng.latitude);
+        eventsRequest.lon = String.valueOf(hotelLatLng.longitude);
         List<String> types = new ArrayList<>();
         types.addAll(selectedEvents);
         eventsRequest.types = types;
@@ -198,6 +202,18 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         if ((!isEventsAdded) && events != null) {
             addEventsInMap();
         }
+
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+//        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(hotelLatLng,5));
+
+        CameraUpdate center=
+                CameraUpdateFactory.newLatLng(hotelLatLng);
+        CameraUpdate zoom=CameraUpdateFactory.zoomTo(15);
+
+        mMap.moveCamera(center);
+        mMap.animateCamera(zoom);
+
+//        mMap.animateCamera(CameraUpdateFactory.zoomTo(16), 5000, null);
 
         // Add a marker in Sydney, Australia, and move the camera.
 //        LatLng sydney = new LatLng(-34, 151);

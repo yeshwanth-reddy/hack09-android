@@ -5,6 +5,6 @@ package com.stayzilla.postbooking.network;
  */
 public interface URLConstants {
 
-    String BASE_URL = "http://hack09.stz.la";
+    String BASE_URL = "http://hack18.stz.la";
     String SEARCH_BASE_URL = "https://search.stayzilla.com";
 }
